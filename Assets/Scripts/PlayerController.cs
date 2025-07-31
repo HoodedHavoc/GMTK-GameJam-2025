@@ -27,22 +27,13 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         
-        transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime); // Player continously moves forwards
-
-        transform.LookAt(pointTo); // Player rotates towards object
+        
     }
 
     private void FixedUpdate()
     {
+        transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime); // Player continously moves forwards
 
-    }
-
-    private void OnSteering(InputValue inputValue)
-    {
-        // Rotate player using playerRot
-        // Move player left or right based on delta value from mouse pointer (look up gamepad stick moving car)
-
-        //Debug.Log(inputValue.Get<Vector2>());
-
+        transform.LookAt(new Vector3(pointTo.position.x, transform.position.y, pointTo.position.z)); // Player rotates towards object
     }
 }
