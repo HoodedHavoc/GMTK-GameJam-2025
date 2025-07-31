@@ -47,37 +47,59 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "",
-                    "id": "8c8e490b-c610-4785-884f-f04217b23ca4",
-                    "path": "<Pointer>/delta",
+                    "name": "2D Vector",
+                    "id": "ae167705-2cc6-453b-8d44-521262752c5a",
+                    "path": "2DVector",
                     "interactions": "",
                     "processors": "",
-                    "groups": ";Keyboard&Mouse;Touch",
+                    "groups": "",
                     "action": "Steering",
-                    "isComposite": false,
+                    "isComposite": true,
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "",
-                    "id": "318956f5-769b-4c86-878c-ce37e5a5356b",
+                    "name": "up",
+                    "id": "168273e8-c7e5-4504-85cd-845d71775dc4",
                     "path": "",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Steering",
                     "isComposite": false,
-                    "isPartOfComposite": false
+                    "isPartOfComposite": true
                 },
                 {
-                    "name": "",
-                    "id": "49bc8d6b-f484-4810-a4ff-9e6d4f0a7413",
-                    "path": "<Mouse>/delta",
+                    "name": "down",
+                    "id": "3070324b-2d22-4645-b33e-ea4de837e89b",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Steering",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "left",
+                    "id": "1c4ec73f-ead3-401e-90d8-8a5dd6d3eeef",
+                    "path": "<Keyboard>/leftArrow",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
                     "action": "Steering",
                     "isComposite": false,
-                    "isPartOfComposite": false
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "55ac2736-6a99-49ec-850b-d7b474b6f172",
+                    "path": "<Keyboard>/rightArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "Steering",
+                    "isComposite": false,
+                    "isPartOfComposite": true
                 },
                 {
                     "name": "",
