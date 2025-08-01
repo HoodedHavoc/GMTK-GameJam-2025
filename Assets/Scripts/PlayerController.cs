@@ -4,7 +4,9 @@ using static UnityEngine.Rendering.DebugUI;
 
 public class PlayerController : MonoBehaviour
 {
-    Rigidbody playerRB;
+    //Rigidbody playerRB;
+    CharacterController character;
+    PlayerInput playerInput;
 
     public float moveSpeed = 5.0f;
 
@@ -17,14 +19,19 @@ public class PlayerController : MonoBehaviour
 
     //public Transform pointTo;
 
-    Vector2 moveInput;
+
+
+    float gravity = -9.8f, _verticalVelocity, mouseInput;
+    public float sensitivity = 5f;
 
     private InputSystem_Actions playerInputActions;
     public float rotationSpeed = 100f; // Adjust as needed
 
     private void Awake()
     {
-        playerRB = GetComponent<Rigidbody>();
+        //playerRB = GetComponent<Rigidbody>();
+        character = GetComponent<CharacterController>();
+        playerInput = new PlayerInput();
 
         //playerInputActions = new InputSystem_Actions();
         //playerInputActions.Player.Enable(); // Enable the Player action map
@@ -37,11 +44,20 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime); // Player continously moves forwards
+        if (character.isGrounded)
+        {
+            _verticalVelocity = -5f;
+        }
+        else
+        {
+            _verticalVelocity = _verticalVelocity + gravity * Time.deltaTime;
+        }
+        
+        character.Move(new Vector3(0, _verticalVelocity,0) * Time.deltaTime);
+        character.Move(transform.forward * moveSpeed * Time.deltaTime); // Player continously moves forwards
 
-        Quaternion target = Quaternion.Euler(0, Input.GetAxis("Mouse X"), 0);
-
-        transform.rotation = Quaternion.Slerp(transform.rotation, target, Time.deltaTime * 5.0f);
+        mouseInput = Input.GetAxis("Mouse X") * sensitivity * Time.deltaTime;
+        transform.Rotate(Vector3.up * mouseInput);
 
 
         //transform.LookAt(new Vector3(pointTo.position.x, transform.position.y, pointTo.position.z)); // Player rotates towards object
@@ -64,6 +80,8 @@ public class PlayerController : MonoBehaviour
 
 
     }*/
+    
 
 
 }
+
