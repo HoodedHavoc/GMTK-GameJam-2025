@@ -1451,7 +1451,7 @@ CharacterController:
     m_Bits: 0
   m_LayerOverridePriority: 0
   m_ProvidesContacts: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_Height: 2
   m_Radius: 0.5
@@ -1690,6 +1690,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1084618490883603510, guid: 0bd4d7048615dc241b6b387f6de58ee2, type: 3}
+    - {fileID: 1275169859722573581, guid: 0bd4d7048615dc241b6b387f6de58ee2, type: 3}
     m_RemovedGameObjects:
     - {fileID: 756000368546313486, guid: 0bd4d7048615dc241b6b387f6de58ee2, type: 3}
     m_AddedGameObjects:
