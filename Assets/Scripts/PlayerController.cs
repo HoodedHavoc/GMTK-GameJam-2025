@@ -4,7 +4,9 @@ using static UnityEngine.Rendering.DebugUI;
 
 public class PlayerController : MonoBehaviour
 {
-    Rigidbody playerRB;
+    //Rigidbody playerRB;
+    CharacterController character;
+    PlayerInput playerInput;
 
     public float _moveSpeed = 5.0f;
     public float _rotationSpeed = 100.0f;
@@ -13,11 +15,24 @@ public class PlayerController : MonoBehaviour
     public float _checkSphereRadius = 10;
 
 
-    public Course courseStage;
+    public float maxYRot = 20f;
+    public float minYRot = -20f;
+
+    //public Transform pointTo;
+
+
+
+    float gravity = -9.8f, _verticalVelocity, mouseInput;
+    public float sensitivity = 5f;
+
+    private InputSystem_Actions playerInputActions;
+    public float rotationSpeed = 100f; // Adjust as needed
 
     private void Awake()
     {
-        playerRB = GetComponent<Rigidbody>();
+        //playerRB = GetComponent<Rigidbody>();
+        character = GetComponent<CharacterController>();
+        playerInput = new PlayerInput();
 
         //playerInputActions = new InputSystem_Actions();
         //playerInputActions.Player.Enable(); // Enable the Player action map
@@ -34,13 +49,20 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-
-        //courseStage.Attract(transform);
-
-        transform.Translate(Vector3.forward * _moveSpeed * Time.deltaTime); // Player continously moves forwards
-
-        if (Input.GetAxis("Horizontal") != 0) // if horizontal buttons A, D, Left Arrow or Right Arrow are pressed // Can be replaced with Input.GetAxis("Mouse X")
+        if (character.isGrounded)
         {
+            _verticalVelocity = -5f;
+        }
+        else
+        {
+            _verticalVelocity = _verticalVelocity + gravity * Time.deltaTime;
+        }
+        
+        character.Move(new Vector3(0, _verticalVelocity,0) * Time.deltaTime);
+        character.Move(transform.forward * moveSpeed * Time.deltaTime); // Player continously moves forwards
+
+        mouseInput = Input.GetAxis("Mouse X") * sensitivity * Time.deltaTime;
+        transform.Rotate(Vector3.up * mouseInput);
 
             RotatePlayer();
             
@@ -71,8 +93,9 @@ public class PlayerController : MonoBehaviour
 
         //Quaternion target = Quaternion.Euler(0, Input.GetAxis("Horizontal") * _rotationSpeed, 0);
 
-        //transform.rotation = Quaternion.Slerp(transform.rotation, target, Time.deltaTime * 2.0f);
-    }
+    }*/
+    
 
 
 }
+
