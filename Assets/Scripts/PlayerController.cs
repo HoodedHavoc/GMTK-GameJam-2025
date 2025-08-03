@@ -21,7 +21,7 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         character = GetComponent<CharacterController>();
-        playerInput = new PlayerInput();
+        //playerInput = new PlayerInput();
 
         //_canMove = false;
 
